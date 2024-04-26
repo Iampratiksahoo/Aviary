@@ -1,9 +1,17 @@
 #include "Engine.h"
 
 #include "Window.h"
-#include "VulkanInstance.h"
+#include "Vulkan/VK_Instance.h"
+#include "Vulkan/VK_PhysicalDevice.h"
 
 #include "Utility/Debug.h"
+
+Engine::Engine() : 
+	m_window(nullptr),
+	m_instance(nullptr),
+	m_physicalDevice(nullptr)
+{
+}
 
 void Engine::initialize_engine()
 {
@@ -17,15 +25,9 @@ void Engine::initialize_engine()
 		Debug::Exception("Engine::ctor()::Failed to create window");
 	}
 
-	// Create a Vulkan Instance
-	if (m_vulkanInstance = new VulkanInstance())
-	{
-		Debug::Log(Log, "Engine::ctor()::Created Vulkan instance");
-	}
-	else
-	{
-		Debug::Exception("Engine::ctor()::Failed to create Vulkan instance");
-	}
+	m_instance = new VK_Instance();
+	m_physicalDevice = new VK_PhysicalDevice(m_instance->Get());
+	
 }
 
 void Engine::Run()

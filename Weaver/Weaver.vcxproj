@@ -235,17 +235,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Vulkan\VK_PhysicalDevice.cpp" />
     <ClCompile Include="src\Utility\Debug.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Core\Engine.cpp" />
     <ClCompile Include="src\Core\Window.cpp" />
-    <ClCompile Include="src\Core\VulkanInstance.cpp" />
+    <ClCompile Include="src\Core\Vulkan\VK_Instance.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Core\Vulkan\VK_PhysicalDevice.h" />
     <ClInclude Include="src\Utility\Debug.h" />
     <ClInclude Include="src\Core\Engine.h" />
     <ClInclude Include="src\Core\Window.h" />
-    <ClInclude Include="src\Core\VulkanInstance.h" />
+    <ClInclude Include="src\Core\Vulkan\VK_Instance.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,20 +1,10 @@
-#include "VulkanInstance.h"
+#include "VK_Instance.h"
 
 #include "GLFW/glfw3.h"
 #include "Utility/Debug.h"
 #include "vector"
 
-VulkanInstance::VulkanInstance()
-{
-	create_instance();
-}
-
-VulkanInstance::~VulkanInstance()
-{
-    vkDestroyInstance(m_instance, nullptr);
-}
-
-void VulkanInstance::create_instance()
+VK_Instance::VK_Instance()
 {
     // Popluate the application info struct
     VkApplicationInfo appInfo{};
@@ -45,13 +35,22 @@ void VulkanInstance::create_instance()
 #endif
 
     // Create the actual Vulkan instance and pass the createInfo struct
-    if (vkCreateInstance(&createInfo, nullptr, &m_instance) != VK_SUCCESS) 
+    if (vkCreateInstance(&createInfo, nullptr, &m_instance) != VK_SUCCESS)
     {
-        Debug::Exception("VulkanInstance :: create_instance() :: failed to create instance!");
+        Debug::Exception("VK_Instance::ctor()::failed to create instance!");
+    }
+    else
+    {
+        Debug::Log(Log, "VK_Instance::ctor()::Created Vulkan Instance");
     }
 }
 
-void VulkanInstance::print_available_extension_names()
+VK_Instance::~VK_Instance()
+{
+    vkDestroyInstance(m_instance, nullptr);
+}
+
+void VK_Instance::print_available_extension_names()
 {
     // Check for available optional extensions 
     uint32_t extensionCount = 0;

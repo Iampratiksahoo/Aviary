@@ -1,14 +1,15 @@
 #pragma once
 
 #include "vulkan/vulkan.h"
-class VulkanInstance
+class VK_Instance
 {
 public:
-	VulkanInstance();
-	~VulkanInstance();
+	VK_Instance();
+	~VK_Instance();
+	
+	inline VkInstance Get() const { return m_instance; }
 
 private:
-	void create_instance();
 	void print_available_extension_names();
 
 	VkInstance m_instance;

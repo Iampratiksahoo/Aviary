@@ -6,10 +6,12 @@
 
 
 class Window;
-class VulkanInstance; 
+class VK_Instance;
+class VK_PhysicalDevice;
 class Engine
 {
 public:
+    Engine();
     void Run();
 
     static constexpr int WIDTH = 800;
@@ -20,7 +22,8 @@ private:
     void main_loop();
 
     Window* m_window;
-    VulkanInstance* m_vulkanInstance;
+    VK_Instance* m_instance;
+    VK_PhysicalDevice* m_physicalDevice;
 };
 
 
